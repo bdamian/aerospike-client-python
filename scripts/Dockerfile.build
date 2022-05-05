@@ -1,0 +1,11 @@
+FROM quay.io/pypa/manylinux_2_24_x86_64
+
+RUN apt-get update && \
+    apt-get install -y libssl-dev; \
+    mkdir -p /code
+
+WORKDIR /code
+
+CMD /code/scripts/incontainer-build.sh
+
+
