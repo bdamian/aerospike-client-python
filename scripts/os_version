@@ -124,6 +124,22 @@ main() {
 		distro_short="el${distro_version}"
 		;;
 	'ubuntu' )
+		case "$distro_version" in
+		"17"* )
+			distro_version="14.04"
+			;;
+		"18"* )
+			distro_version="16.04"
+			;;
+		"2"* )
+			distro_version="20.04"
+			;;
+		* )
+			error "Unsupported linux distibution version: $distro_id $distro_version"
+			error "Guessing compatibility with Ubuntu 16.04"
+			distro_version="16.04"
+			;;
+		esac
 		distro_long="${distro_id}${distro_version}"
 		distro_version=${distro_version%.*}
 		distro_short="${distro_id}${distro_version}"
